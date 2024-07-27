@@ -1,0 +1,30 @@
+<div class="container mt-4">
+    <h2>Scheduled Vehicles</h2>
+    <ul class="list-group mb-4">
+        <li *ngFor="let vehicle of scheduledVehicles" class="list-group-item">
+            {{ vehicle.model }} - {{ vehicle.status }}
+        </li>
+    </ul>
+
+    <h3>Add Bill of Material</h3>
+    <form (ngSubmit)="addBillOfMaterial()" #serviceForm="ngForm">
+        <div class="mb-3">
+            <label for="item" class="form-label">Item</label>
+            <input type="text" class="form-control" [(ngModel)]="newItem.item" name="item" required>
+        </div>
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" class="form-control" [(ngModel)]="newItem.quantity" name="quantity" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Item</button>
+    </form>
+
+    <h3>Bill of Materials</h3>
+    <ul class="list-group mb-4">
+        <li *ngFor="let item of billOfMaterials" class="list-group-item">
+            {{ item.item }} - Quantity: {{ item.quantity }}
+        </li>
+    </ul>
+
+    <button (click)="completeService()" class="btn btn-success">Complete Service</button>
+</div>
