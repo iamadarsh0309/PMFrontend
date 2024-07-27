@@ -10,7 +10,7 @@ import { ServiceRepresentative } from '../model/service-representative';
   providedIn: 'root'
 })
 export class VehicleService {
-  getScheduledVehicles() {
+  getScheduledVehicles() : Observable<Vehicle[]> {
     throw new Error('Method not implemented.');
   }
   getServiceAdvisors(): Observable<ServiceRepresentative[]> {
