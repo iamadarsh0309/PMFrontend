@@ -41,6 +41,15 @@ export class VehicleService {
       );
   }
 
+   getVehicles(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/vehicles`).pipe(
+      catchError(error => {
+        console.error('Error fetching vehicles', error);
+        return throwError(() => new Error('Error fetching vehicles'));
+      })
+    );
+  }
+
   scheduleService(vehicleId: number, serviceAdvisorId: number): Observable<any> {
     const url = `${this.apiUrl}/vehicles/schedule-service`;
     const body = { vehicleId, serviceAdvisorId };
