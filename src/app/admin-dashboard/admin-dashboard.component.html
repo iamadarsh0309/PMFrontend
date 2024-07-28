@@ -40,4 +40,14 @@
     <div *ngIf="errorMessage" class="alert alert-danger mt-3">
         {{ errorMessage }}
     </div>
+
+  <div *ngIf="error" class="alert alert-danger">
+  {{ error }}
+</div>
+
+<ul *ngIf="!error">
+  <li *ngFor="let vehicle of vehicles">
+    {{ vehicle.model }} - {{ vehicle.status }}
+  </li>
+</ul>
 </div>
