@@ -16,6 +16,8 @@ export class AdminDashboardComponent implements OnInit {
   serviceAdvisors: ServiceRepresentative[] = [];
   selectedServiceAdvisorId: number | null = null;
   errorMessage: string = '';
+  vehicles: any[] = [];
+  error: string | null = null;
 
   constructor(private vehicleService: VehicleService) {}
 
@@ -37,6 +39,15 @@ export class AdminDashboardComponent implements OnInit {
       data => this.servicedVehicles = data,
       error => this.errorMessage = error
     );
+    this.vehicleService.getVehicles().subscribe(
+      data => {
+        this.vehicles = data;
+        this.error = null;
+      },
+      error => {
+        console.error('Error loading vehicles', error);
+        this.error = 'Something went wrong while loading vehicles.';
+      }
   }
 
   loadServiceAdvisors() {
